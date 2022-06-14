@@ -127,6 +127,7 @@ void dijkstra(dijkstra_return_type_t* return_data, graph_t* graph, int source_ve
   for (int i = 0; i < graph->n_vertices; i++) {
     if (i == source_vertex) {
       dijkstra_cost_array[i] = 0;
+      dijkstra_previous_vertices_array[i] = i;
     } else {
       dijkstra_cost_array[i] = INT_MAX;
     }
