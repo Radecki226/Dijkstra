@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
+#include <conio.h>
 
 #define MAX_LINE_LEN 100
 
@@ -169,5 +170,6 @@ int main(){
   graph_cleanup(&graph);
 
   printf("Goodbye!\n");
+  getch();
   return 0;
 }

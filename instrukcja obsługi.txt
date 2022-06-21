@@ -1,3 +1,7 @@
+Kompilacja programu: gcc main.c dijkstra.c
+Uruchomienie programu: ./a
+
+Opis pliku tekstowego:
 D - numer wierzchołku w grafie będący punktem dowodzenia (po dwukropku)
 S - numery wierzchołków w grafie sąsiadujące z naszym budynkiem (po dwukropku, oddzielone przecinkiem)
 
