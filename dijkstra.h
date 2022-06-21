@@ -1,9 +1,11 @@
-#include<stdlib.h>
-#include<stdio.h>
-#include<limits.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
 
 #ifndef __DIJKSTRA_H__
 #define __DIJKSTRA_H__
+
+#define START_COST (INT_MAX - 100)
 
 //Structure for node reprezentation in graph adjacency list
 typedef struct node_t {

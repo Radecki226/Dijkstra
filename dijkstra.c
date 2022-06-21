@@ -79,18 +79,14 @@ void dijkstra_pop_min_vertex(dijkstra_node_t** list, int vertex) {
   
   //delete from beginning
   if (iter->vertex == vertex){
-    //printf("list old head vertex = %d\n", &list->vertex);
-    dijkstra_node_t* new_head = iter->next;
     *list = iter->next;
-    //printf("list new head vertex = %d\n", *list->vertex);
     free(iter);
     return;
   }
 
-  //detele other element
+  //delete other element
   while(iter->next != NULL) {
     if (vertex == iter->next->vertex){
-      printf("vertex to pop = %d\n", iter->next->vertex);
       dijkstra_node_t* vertex_to_pop = iter->next;
       iter->next = iter->next->next;
       vertex_to_pop->next = NULL;
@@ -129,7 +125,8 @@ void dijkstra(dijkstra_return_type_t* return_data, graph_t* graph, int source_ve
       dijkstra_cost_array[i] = 0;
       dijkstra_previous_vertices_array[i] = i;
     } else {
-      dijkstra_cost_array[i] = INT_MAX;
+      dijkstra_cost_array[i] = START_COST;
+      dijkstra_previous_vertices_array[i] = -1;
     }
   }
     
@@ -139,7 +136,6 @@ void dijkstra(dijkstra_return_type_t* return_data, graph_t* graph, int source_ve
     dijkstra_node_t* new_node = malloc(sizeof(dijkstra_node_t));
     new_node->vertex = i;
     new_node->cost = &dijkstra_cost_array[i];
-    int temp = *(new_node->cost);
     new_node->next = dijkstra_non_visited_nodes;
     dijkstra_non_visited_nodes = new_node;
   }
@@ -149,7 +145,6 @@ void dijkstra(dijkstra_return_type_t* return_data, graph_t* graph, int source_ve
 
     //Fetch minimum vertex
     int min_vertex = dijkstra_find_min_vertex(dijkstra_non_visited_nodes);
-    int min_vertex_cost = dijkstra_cost_array[min_vertex];
 
     //Pop it from list
     dijkstra_pop_min_vertex(&dijkstra_non_visited_nodes, min_vertex);
